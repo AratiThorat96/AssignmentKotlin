@@ -1,34 +1,19 @@
-package com.example.assignmentkotlin
+package com.example.minorprojectassignment
 
 import android.os.Bundle
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.minorprojectassignment.R
 
 class ThirdActivity : AppCompatActivity() {
-
-    private lateinit var finalTextView: TextView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_third)
 
-        // Handle window insets for proper padding
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        // Retrieve data from Intent
+        val finalData = intent.getStringExtra("final_data")
 
-        // Initialize finalTextView
-        finalTextView = findViewById(R.id.finalTextView)
-
-        // Retrieve and display the final data from the Intent
-        val finalData = intent.getStringExtra("finalData")
-        finalTextView.text = finalData
+        // Display the final data in a TextView
+        val textView = findViewById<TextView>(R.id.textView)
+        textView.text = finalData
     }
 }

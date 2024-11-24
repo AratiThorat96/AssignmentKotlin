@@ -1,4 +1,5 @@
-package com.example.assignmentkotlin
+package com.example.minorprojectassignment
+
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,40 +7,44 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.minorprojectassignment.R
 
 class SecondActivity : AppCompatActivity() {
-    private lateinit var displayTextView: TextView
-    private lateinit var buttonSend: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
-        displayTextView = findViewById(R.id.displayTextView)
-        buttonSend = findViewById(R.id.buttonSend)
-
         // Retrieve data from Intent
-        val receivedText1 = intent.getStringExtra("key1")
-        val receivedText2 = intent.getStringExtra("key2")
-        val receivedText3 = intent.getStringExtra("key3")
-        val receivedText4 = intent.getStringExtra("key4")
-        val receivedText5 = intent.getStringExtra("key5")
-        val booleanValue = intent.getBooleanExtra("booleanKey", false)
-        val intValue = intent.getIntExtra("intKey", 0)
-        val floatValue = intent.getFloatExtra("floatKey", 0f)
+        val stringOne = intent.getStringExtra("string_one")
+        val stringTwo = intent.getStringExtra("string_two")
+        val stringThree = intent.getStringExtra("string_three")
+        val stringFour = intent.getStringExtra("string_four")
+        val stringFive = intent.getStringExtra("string_five")
+        val booleanValue = intent.getBooleanExtra("boolean_value", false)
+        val integerValue = intent.getIntExtra("integer_value", 0)
+        val floatValue = intent.getFloatExtra("float_value", 0.0f)
 
-        // Log the retrieved values
-        Log.d("SecondActivity", "Received Text: $receivedText1, $receivedText2, $receivedText3, $receivedText4, $receivedText5")
-        Log.d("SecondActivity", "Boolean: $booleanValue, Int: $intValue, Float: $floatValue")
+        // Combine all data into one string
+        val combinedData = """
+            $stringOne
+            $stringTwo
+            $stringThree
+            $stringFour
+            $stringFive
+            Boolean: $booleanValue
+            Integer: $integerValue
+            Float: $floatValue
+        """.trimIndent()
 
-        // Display one of the strings in the TextView
-        displayTextView.text = "Received: $receivedText1, $receivedText2, $receivedText3, $receivedText4, $receivedText5"
+        // Show in TextView and Logcat
+        val textView = findViewById<TextView>(R.id.textView)
+        textView.text = combinedData
+        Log.d("SecondActivity", combinedData)
 
-        buttonSend.setOnClickListener {
-            val finalData = "Received: $receivedText1, $receivedText2, $receivedText3, $receivedText4, $receivedText5, Boolean: $booleanValue, Int: $intValue, Float: $floatValue"
+        // Button to send data to ThirdActivity
+        val button = findViewById<Button>(R.id.button)
+        button.setOnClickListener {
             val intent = Intent(this, ThirdActivity::class.java)
-            intent.putExtra("finalData", finalData)
+            intent.putExtra("final_data", combinedData)
             startActivity(intent)
         }
     }

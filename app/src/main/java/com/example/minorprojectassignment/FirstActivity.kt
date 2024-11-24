@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.minorprojectassignment.R
+import com.example.minorprojectassignment.SecondActivity
 
 class FirstActivity : AppCompatActivity() {
     private lateinit var textView1: TextView

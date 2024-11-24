@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">MinorProjectAssignment</string>
-    <string name="string1">Hello World</string>
-    <string name="string2">Welcome to Android</string>
-    <string name="string3">This is MainActivity</string>
-    <string name="string5">Enjoy Coding</string>
-    <string name="string4">Have a Great Day!</string>
+
+        <string name="app_name">Assignment App</string>
+        <string name="string_one">This is string one</string>
+        <string name="string_two">This is string two</string>
+        <string name="string_three">This is string three</string>
+        <string name="string_four">This is string four</string>
+        <string name="string_five">This is string five</string>
+
+
 </resources>
